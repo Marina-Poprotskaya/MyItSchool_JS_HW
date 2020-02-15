@@ -198,3 +198,5 @@ for (i=0; i < arr10.length; i++) {                     //Вычисляем су
     summ+= +arr10[i]; 
 }
 console.log('Сумма цифр в числе равна ' + summ);
+
+
