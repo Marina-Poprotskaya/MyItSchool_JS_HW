@@ -89,6 +89,7 @@ carrying = carrying || 10;
 
 this.fuelAmount = 0;
 this.goodsWeight = 0;
+this.gearNow = 0;
 
 this.setFuel = function(amount) {
   if(amount > 0 && amount <= fuelTank) {
@@ -114,28 +115,27 @@ this.startEngine = function() {
 };
 
 
-this.firstGearOn = function() {
+this.gearOn = function(gear) { 
+if (gear == 1) {
   this.run = true;
-};
-
-this.secondGearOn = function() {
-  if (this.firstGearOn == true) {
-    this.run = true;
-  } else alert ('Включите первую передачу')
-};
-
-this.thirdGearOn = function() {
-  if (this.secondGearOn == true) {
-    this.run = true;
-  } else alert ('Включите вторую передачу')
-};
+  this.gearNow = gear + 'ая передача';
+} else if (gear == 2 && this.run == true) {
+  this.gearNow = gear + 'ая передача';
+} else if (gear == 3 && this.run == true) {
+  this.gearNow = gear + 'яя передача';
+} else if (gear > 3) {
+  alert ('В данной комплектации 3-ехступенчатая КПП');
+} else {
+  alert ('Включите первую передачу');
+}
+}
 
 this.gearOff = function() {
   this.run= false;
 };
 
 this.info = function() {
-  return 'Лошадиные силы:' + horsepower + '. Объем топливного бака, литров: ' + fuelTank +  '. Грузоподъемность, тонн: ' + carrying + '. Залито топлива, литров: ' + this.fuelAmount + '. Загружено, тонн: '+ this.goodsWeight +'. Передача: ' + (this.run ? 'включена' : 'нейтральная') + '. Двигатель:' + (this.getStatus() ? 'заведен' : 'заглушен') + '.';
+  return 'Лошадиные силы:' + horsepower + '. Объем топливного бака, литров: ' + fuelTank +  '. Грузоподъемность, тонн: ' + carrying + '. Залито топлива, литров: ' + this.fuelAmount + '. Загружено, тонн: '+ this.goodsWeight +'. Передача: ' + (this.run ? 'включена ' + this.gearNow: 'нейтральная') + '. Двигатель:' + (this.getStatus() ? 'заведен' : 'заглушен') + '.';
 }
 
 }
