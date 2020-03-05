@@ -1,16 +1,20 @@
-function message (type) {
+function message (type, string) {
+    let textElem = document.createTextNode(string);
     if (type == error) {
         error.style.display = "block";
+        error.appendChild(textElem);
         setTimeout(function(){
             document.body.removeChild(error);
         }, 5000);
     } else if (type == alertHello) {
         alertHello.style.display = "block";
+        alertHello.appendChild(textElem);
         setTimeout(function(){
             document.body.removeChild(alertHello);
         }, 5000);
     } else if (type == msg) {
         msg.style.display = "block";
+        msg.appendChild(textElem);
         setTimeout(function(){
             document.body.removeChild(msg);
         }, 5000);
@@ -18,9 +22,8 @@ function message (type) {
 }
 
 let error = document.createElement('div');
-let textElem = document.createTextNode('Сообщение об ошибке');
 document.body.appendChild(error);
-error.appendChild(textElem);
+
 
 error.style.width = '300px';
 error.style.height = '70px';
@@ -38,9 +41,8 @@ error.style.display = "none"
 
 
 let alertHello = document.createElement('div');
-let textElem2 = document.createTextNode('Привет, мир!');
 document.body.appendChild(alertHello);
-alertHello.appendChild(textElem2);
+
 
  
 alertHello.style.cssText = "position: fixed; top: 40px; left: 40%; background-color: #ccc; color: blue; width: 300px; height: 70px; border-radius:10px; font-size: 24px; font-weight: bold; padding-top: 40px; text-align: center; display: none"
@@ -48,12 +50,10 @@ alertHello.style.cssText = "position: fixed; top: 40px; left: 40%; background-co
 
 
 let msg = document.createElement('div');
-msg.innerHTML = "Ваше сообщение отправлено!";
 document.body.appendChild(msg);
 
  
 msg.style.cssText = "position: fixed; top: 40px; left: 40%; background-color: lightgreen; color: green; width: 300px; height: 70px; border-radius:10px; font-size: 20px; font-weight: bold; padding-top: 40px; text-align: center; display: none;"
 
 
-
-message (alertHello);
+message (error,'Ошибка!');
