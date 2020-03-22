@@ -41,7 +41,7 @@ function toDoList() {
                 li.style.cssText = "width: 290px; height: auto;  padding-left: 10px; border-bottom: 1px solid gray;  word-wrap: break-word;"
                 span.style.cssText = "padding-left: 20px; font-size: 20px; padding-bottom: 5px; font-weight: bold;"
 
-                checkbox.addEventListener('click', function () {
+                checkbox.addEventListener('change', function () {
                     span.classList.toggle('crossed')
                 })
 
